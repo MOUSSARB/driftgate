@@ -1,0 +1,33 @@
+{
+  "schemaVersion": "driftgate/v1",
+  "traceId": "trace_candidate_001",
+  "scenarioId": "cancel-subscription",
+  "source": "generic",
+  "durationMs": 1800,
+  "usage": {
+    "inputTokens": 1100,
+    "outputTokens": 180,
+    "costUsd": 0.013
+  },
+  "output": "Your subscription has been cancelled.",
+  "spans": [
+    {
+      "id": "1",
+      "kind": "tool",
+      "name": "lookup_customer",
+      "status": "ok",
+      "input": {
+        "customerId": "42"
+      }
+    },
+    {
+      "id": "2",
+      "kind": "tool",
+      "name": "cancel_subscription",
+      "status": "ok",
+      "input": {
+        "customerId": "42"
+      }
+    }
+  ]
+}
