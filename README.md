@@ -1,51 +1,20 @@
-# DriftGate — Day 1–3 MVP
+# DriftGate
 
-Behavioral regression testing for AI-agent traces.
+Behavioral regression testing for AI agents.
 
-## Requirements
+## What it does
 
-- Node.js 22+
-- pnpm 10+
+DriftGate replays agent scenarios in CI and compares tool trajectories, arguments, cost, and latency between baseline and candidate versions.
 
-## Setup
+## Quick Start
 
 ```bash
-corepack enable
-corepack prepare pnpm@10.15.1 --activate
+git clone https://github.com/MOUSSARB/driftgate.git
+cd driftgate
 pnpm install
 pnpm build
-pnpm test
-```
 
-`pnpm install` generates `pnpm-lock.yaml`. Commit the generated lockfile.
-
-## Local smoke test
-
-```bash
 node dist/cli.js init
-
-node dist/cli.js record \
-  --scenario cancel-subscription \
-  --label baseline \
-  --file examples/baseline.json
-
-node dist/cli.js record \
-  --scenario cancel-subscription \
-  --label candidate \
-  --file examples/candidate.json
-
+node dist/cli.js record --scenario cancel-subscription --label baseline --file examples/baseline.json
+node dist/cli.js record --scenario cancel-subscription --label candidate --file examples/candidate.json
 node dist/cli.js test
-```
-
-For machine-readable output:
-
-```bash
-node dist/cli.js test --json
-```
-
-During development:
-
-```bash
-pnpm dev -- init
-pnpm dev -- test
-```
